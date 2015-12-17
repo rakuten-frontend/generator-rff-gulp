@@ -1,5 +1,5 @@
 # generator-rff-gulp [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
-> Scaffold a gulp-based frontend web app.
+> [WIP] Scaffold a gulp-based frontend web app.
 
 ## Installation
 
