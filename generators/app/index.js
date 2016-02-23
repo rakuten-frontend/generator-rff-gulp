@@ -2,6 +2,7 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var rp = require('request-promise');
 
 module.exports = yeoman.generators.Base.extend({
   prompting: function () {
@@ -28,13 +29,38 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function () {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
+    var self = this;
+    var done = this.async();
+    var user = 'rakuten-frontend';
+    var repo = 'rff-gulp';
+    var jsonUrl = 'https://github.com/' + user + '/' + repo + '/raw/master/package.json';
+    return rp(jsonUrl)
+      .then(function (json) {
+        return JSON.parse(json);
+      })
+      .then(function (pkg) {
+        var remoteUrl = 'https://github.com/' + user + '/' + repo + '/releases/download/v' + pkg.version + '/' + repo + '-v' + pkg.version + '.zip';
+        return new Promise(function (resolve, reject) {
+          self.remote(remoteUrl, function (err, remote) {
+            if (err) {
+              reject(err);
+              return;
+            }
+            resolve(remote);
+          }, true);
+        });
+      })
+      .then(function (remote) {
+        remote.directory('.', '.');
+        done();
+      })
+      .catch(function (err) {
+        console.error(chalk.red('Failed to fetch template!'));
+        done(err);
+      });
   },
 
   install: function () {
-    this.installDependencies();
+    this.installDependencies({bower: false});
   }
 });
