@@ -22,7 +22,7 @@ module.exports = yeoman.generators.Base.extend({
     this.prompt(prompts, function (props) {
       abort = !props.ready;
       done();
-    }.bind(this));
+    });
   },
 
   writing: function () {
