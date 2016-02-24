@@ -32,11 +32,10 @@ gulp.task('pre-test', function () {
 gulp.task('test', ['pre-test'], function (cb) {
   var mochaErr;
 
-  gulp.src('test/**/*.js')
+  gulp.src('test/specs/*.js')
     .pipe(plumber())
     .pipe(mocha({
-      reporter: 'spec',
-      timeout: 10000
+      reporter: 'spec'
     }))
     .on('error', function (err) {
       mochaErr = err;
