@@ -2,19 +2,35 @@
   "name": "generator-rff-gulp",
   "version": "0.0.0",
   "description": "Scaffold a gulp-based frontend web app.",
-  "homepage": "https://github.com/rakuten-frontend/generator-rff-gulp",
   "author": {
     "name": "Rakuten, Inc."
   },
-  "files": [
-    "generators"
-  ],
-  "main": "generators/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rakuten-frontend/generator-rff-gulp.git"
+  },
+  "homepage": "https://github.com/rakuten-frontend/generator-rff-gulp",
+  "bugs": {
+    "url": "https://github.com/rakuten-frontend/generator-rff-gulp/issues"
+  },
   "keywords": [
     "yeoman-generator",
     "gulp",
     "browserify",
-    "postcss"
+    "postcss",
+    "front-end"
+  ],
+  "engines": {
+    "node": ">=0.12"
+  },
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "main": "generators/app",
+  "files": [
+    "generators"
   ],
   "dependencies": {
     "chalk": "^1.0.0",
@@ -23,20 +39,18 @@
     "yosay": "^1.0.2"
   },
   "devDependencies": {
-    "yeoman-assert": "^2.0.0",
+    "eslint-config-xo-space": "^0.10.0",
     "gulp": "^3.6.0",
+    "gulp-coveralls": "^0.1.0",
     "gulp-eslint": "^1.0.0",
     "gulp-exclude-gitignore": "^1.0.0",
     "gulp-istanbul": "^0.9.0",
     "gulp-mocha": "^2.0.0",
-    "gulp-plumber": "^1.0.0",
     "gulp-nsp": "^2.1.0",
-    "gulp-coveralls": "^0.1.0"
+    "gulp-plumber": "^1.0.0",
+    "yeoman-assert": "^2.0.0"
   },
-  "repository": "rakuten-frontend/generator-rff-gulp",
-  "scripts": {
-    "prepublish": "gulp prepublish",
-    "test": "gulp"
-  },
-  "license": "MIT"
+  "eslintConfig": {
+    "extends": "xo-space/browser"
+  }
 }
