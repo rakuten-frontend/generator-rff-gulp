@@ -6,6 +6,8 @@ var yosay = require('yosay');
 var rp = require('request-promise');
 var path = require('path');
 
+var abort = false;
+
 module.exports = yeoman.generators.Base.extend({
   prompting: function () {
     var done = this.async();
@@ -18,13 +20,13 @@ module.exports = yeoman.generators.Base.extend({
       default: true
     }];
     this.prompt(prompts, function (props) {
-      this.props = props;
+      abort = !props.ready;
       done();
     }.bind(this));
   },
 
   writing: function () {
-    if (!this.props.ready) {
+    if (abort) {
       this.log('Process canceled.');
       return;
     }
@@ -54,13 +56,15 @@ module.exports = yeoman.generators.Base.extend({
         done();
       })
       .catch(function (err) {
+        abort = true;
         self.log(chalk.red('Failed to fetch template!'));
-        done(err);
+        self.log(chalk.gray(err.toString()));
+        done();
       });
   },
 
   install: function () {
-    if (!this.props.ready) {
+    if (abort) {
       return;
     }
     this.installDependencies({bower: false});
