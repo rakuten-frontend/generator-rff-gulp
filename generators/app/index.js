@@ -8,7 +8,7 @@ var path = require('path');
 
 var abort = false;
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
   prompting: function () {
     var done = this.async();
     var dirname = path.basename(this.env.cwd);
@@ -31,7 +31,6 @@ module.exports = yeoman.generators.Base.extend({
       return;
     }
     var self = this;
-    var done = this.async();
     var user = 'rakuten-frontend';
     var repo = 'rff-gulp';
     var jsonUrl = 'https://github.com/' + user + '/' + repo + '/raw/master/package.json';
@@ -53,13 +52,11 @@ module.exports = yeoman.generators.Base.extend({
       })
       .then(function (remote) {
         remote.directory('.', '.');
-        done();
       })
       .catch(function (err) {
         abort = true;
         self.log(chalk.red('Failed to fetch template!'));
         self.log(chalk.gray(err.toString()));
-        done();
       });
   },
 
