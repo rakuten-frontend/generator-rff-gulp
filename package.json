@@ -1,7 +1,7 @@
 {
   "name": "generator-rff-gulp",
   "version": "0.0.0",
-  "description": "Scaffold a gulp-based frontend web app.",
+  "description": "Yeoman generator for rff-gulp, the gulp-based boilerplate.",
   "author": {
     "name": "Rakuten, Inc."
   },
