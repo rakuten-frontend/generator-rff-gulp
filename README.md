@@ -1,35 +1,41 @@
-# generator-rff-gulp [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
-> [WIP] Scaffold a gulp-based frontend web app.
+# generator-rff-gulp
+> Yeoman generator for [rff-gulp](https://github.com/rakuten-frontend/rff-gulp), the gulp-based boilerplate.
+
+[![npm Version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Dependency Status][david-image]][david-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
 
 ## Installation
+First, install **[Yeoman](http://yeoman.io)** and **generator-rff-gulp** using [npm](https://www.npmjs.com/) (we assume you have pre-installed [Node.js](https://nodejs.org/)).
 
-First, install [Yeoman](http://yeoman.io) and generator-rff-gulp using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
-
-```bash
-npm install -g yo
-npm install -g generator-rff-gulp
+```sh
+$ npm install -g yo
+$ npm install -g generator-rff-gulp
 ```
 
 Then generate your new project:
 
-```bash
-yo rff-gulp
+```sh
+$ yo rff-gulp
 ```
 
-## Getting To Know Yeoman
+## Features
+This generator creates project by fetching the latest [rff-gulp](https://github.com/rakuten-frontend/rff-gulp) on GitHub.  
+Once you install generator-rrf-gulp, you can automatically use the latest template.
 
-Yeoman has a heart of gold. He&#39;s a person with feelings and opinions, but he&#39;s very easy to work with. If you think he&#39;s too opinionated, he can be easily convinced. Feel free to [learn more about him](http://yeoman.io/).
+## Documentation
+See [rff-gulp](https://github.com/rakuten-frontend/rff-gulp) for details.
 
 ## License
+Copyright (c) 2015-2016 Rakuten, Inc.
+Licensed under the [MIT License](LICENSE).
 
-MIT © Rakuten, Inc.
-
-
-[npm-image]: https://badge.fury.io/js/generator-rff-gulp.svg
+[npm-image]: https://img.shields.io/npm/v/generator-rff-gulp.svg
 [npm-url]: https://npmjs.org/package/generator-rff-gulp
 [travis-image]: https://travis-ci.org/rakuten-frontend/generator-rff-gulp.svg?branch=master
 [travis-url]: https://travis-ci.org/rakuten-frontend/generator-rff-gulp
-[daviddm-image]: https://david-dm.org/rakuten-frontend/generator-rff-gulp.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/rakuten-frontend/generator-rff-gulp
-[coveralls-image]: https://coveralls.io/repos/rakuten-frontend/generator-rff-gulp/badge.svg
+[david-image]: https://david-dm.org/rakuten-frontend/generator-rff-gulp.svg
+[david-url]: https://david-dm.org/rakuten-frontend/generator-rff-gulp
+[coveralls-image]: https://coveralls.io/repos/rakuten-frontend/generator-rff-gulp/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/r/rakuten-frontend/generator-rff-gulp
