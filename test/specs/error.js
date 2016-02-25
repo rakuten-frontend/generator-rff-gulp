@@ -7,7 +7,6 @@ var helpers = require('yeoman-generator').test;
 var nock = require('nock');
 
 describe('Error', function () {
-
   describe('in fetching package.json', function () {
     before(function (done) {
       nock('https://github.com')
