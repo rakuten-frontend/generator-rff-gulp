@@ -1,6 +1,6 @@
 {
   "name": "generator-rff-gulp",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Yeoman generator for rff-gulp, the gulp-based boilerplate.",
   "author": {
     "name": "Rakuten, Inc."
