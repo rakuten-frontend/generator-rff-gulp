@@ -10,7 +10,6 @@ var abort = false;
 
 module.exports = generators.Base.extend({
   prompting: function () {
-    var done = this.async();
     var dirname = path.basename(this.env.cwd);
     this.log(yosay('Welcome to ' + chalk.red('rff-gulp') + ' generator!'));
     var prompts = [{
@@ -19,10 +18,10 @@ module.exports = generators.Base.extend({
       message: 'Would you like to create a new project in "' + dirname + '" directory?',
       default: true
     }];
-    this.prompt(prompts, function (props) {
-      abort = !props.ready;
-      done();
-    });
+    return this.prompt(prompts)
+      .then(function (props) {
+        abort = !props.ready;
+      });
   },
 
   writing: function () {

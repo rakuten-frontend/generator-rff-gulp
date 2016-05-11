@@ -34,8 +34,8 @@
   ],
   "dependencies": {
     "chalk": "^1.0.0",
-    "request-promise": "^2.0.1",
-    "yeoman-generator": "^0.22.5",
+    "request-promise": "^3.0.0",
+    "yeoman-generator": "^0.23.3",
     "yosay": "^1.0.2"
   },
   "devDependencies": {
