@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "eslint": "^2.3.0",
-    "eslint-config-xo-space": "^0.11.0",
+    "eslint-config-xo-space": "^0.13.0",
     "gulp": "^3.6.0",
     "gulp-coveralls": "^0.1.0",
     "gulp-eslint": "^2.0.0",
@@ -49,7 +49,7 @@
     "gulp-mocha": "^2.0.0",
     "gulp-nsp": "^2.1.0",
     "gulp-plumber": "^1.0.0",
-    "nock": "^7.2.2",
+    "nock": "^8.0.0",
     "yeoman-assert": "^2.0.0",
     "yeoman-test": "^1.1.0"
   },
