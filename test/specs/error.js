@@ -1,14 +1,14 @@
 /* eslint-env mocha */
 'use strict';
 
-var path = require('path');
-var assert = require('yeoman-assert');
-var helpers = require('yeoman-test');
-var nock = require('nock');
+const path = require('path');
+const assert = require('yeoman-assert');
+const helpers = require('yeoman-test');
+const nock = require('nock');
 
-describe('Error', function () {
-  describe('in fetching package.json', function () {
-    before(function (done) {
+describe('Error', () => {
+  describe('in fetching package.json', () => {
+    before(done => {
       nock('https://github.com')
         .persist()
         .get('/rakuten-frontend/rff-gulp/raw/master/package.json')
@@ -19,19 +19,19 @@ describe('Error', function () {
         .on('end', done);
     });
 
-    after(function () {
+    after(() => {
       nock.cleanAll();
     });
 
-    it('cancels creating files', function () {
+    it('cancels creating files', () => {
       assert.noFile([
         'package.json'
       ]);
     });
   });
 
-  describe('in fetching remote template', function () {
-    before(function (done) {
+  describe('in fetching remote template', () => {
+    before(done => {
       nock('https://github.com')
         .persist()
         .get('/rakuten-frontend/rff-gulp/raw/master/package.json')
@@ -42,11 +42,11 @@ describe('Error', function () {
         .on('end', done);
     });
 
-    after(function () {
+    after(() => {
       nock.cleanAll();
     });
 
-    it('cancels creating files', function () {
+    it('cancels creating files', () => {
       assert.noFile([
         'package.json'
       ]);

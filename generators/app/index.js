@@ -1,46 +1,43 @@
 'use strict';
 
-var generators = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
-var rp = require('request-promise');
-var path = require('path');
+const generators = require('yeoman-generator');
+const chalk = require('chalk');
+const yosay = require('yosay');
+const rp = require('request-promise');
+const path = require('path');
 
-var abort = false;
+let abort = false;
 
-module.exports = generators.Base.extend({
-  prompting: function () {
-    var dirname = path.basename(this.env.cwd);
-    this.log(yosay('Welcome to ' + chalk.red('rff-gulp') + ' generator!'));
-    var prompts = [{
+class Generator extends generators.Base {
+  prompting() {
+    const dirname = path.basename(this.env.cwd);
+    this.log(yosay(`Welcome to ${chalk.red('rff-gulp')} generator!`));
+    const prompts = [{
       type: 'confirm',
       name: 'ready',
-      message: 'Would you like to create a new project in "' + dirname + '" directory?',
+      message: `Would you like to create a new project in "${dirname}" directory?`,
       default: true
     }];
     return this.prompt(prompts)
-      .then(function (props) {
-        abort = !props.ready;
+      .then(answers => {
+        abort = !answers.ready;
       });
-  },
+  }
 
-  writing: function () {
+  writing() {
     if (abort) {
       this.log('Process canceled.');
       return;
     }
-    var self = this;
-    var user = 'rakuten-frontend';
-    var repo = 'rff-gulp';
-    var jsonUrl = 'https://github.com/' + user + '/' + repo + '/raw/master/package.json';
+    const user = 'rakuten-frontend';
+    const repo = 'rff-gulp';
+    const jsonUrl = `https://github.com/${user}/${repo}/raw/master/package.json`;
     return rp(jsonUrl)
-      .then(function (json) {
-        return JSON.parse(json);
-      })
-      .then(function (pkg) {
-        var remoteUrl = 'https://github.com/' + user + '/' + repo + '/releases/download/v' + pkg.version + '/' + repo + '-v' + pkg.version + '.zip';
-        return new Promise(function (resolve, reject) {
-          self.remote(remoteUrl, function (err, remote) {
+      .then(json => JSON.parse(json))
+      .then(pkg => {
+        const remoteUrl = `https://github.com/${user}/${repo}/releases/download/v${pkg.version}/${repo}-v${pkg.version}.zip`;
+        return new Promise((resolve, reject) => {
+          this.remote(remoteUrl, (err, remote) => {
             if (err) {
               reject(err);
               return;
@@ -49,20 +46,22 @@ module.exports = generators.Base.extend({
           }, true);
         });
       })
-      .then(function (remote) {
+      .then(remote => {
         remote.directory('.', '.');
       })
-      .catch(function (err) {
+      .catch(err => {
         abort = true;
-        self.log(chalk.red('Failed to fetch template!'));
-        self.log(chalk.gray(err.toString()));
+        this.log(chalk.red('Failed to fetch template!'));
+        this.log(chalk.gray(err.toString()));
       });
-  },
+  }
 
-  install: function () {
+  install() {
     if (abort) {
       return;
     }
     this.installDependencies({bower: false});
   }
-});
+}
+
+module.exports = Generator;
