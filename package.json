@@ -48,7 +48,6 @@
     "gulp-load-plugins": "^1.2.0",
     "gulp-mocha": "^2.0.0",
     "gulp-nsp": "^2.1.0",
-    "gulp-plumber": "^1.0.0",
     "nock": "^8.0.0",
     "yeoman-assert": "^2.0.0",
     "yeoman-test": "^1.1.0"

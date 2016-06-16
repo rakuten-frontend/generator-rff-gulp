@@ -1,10 +1,10 @@
 'use strict';
 
-var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var path = require('path');
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
+const path = require('path');
 
-gulp.task('static', function () {
+gulp.task('static', () => {
   return gulp.src([
     '*.js',
     'generators/app/*.js',
@@ -15,11 +15,11 @@ gulp.task('static', function () {
     .pipe($.eslint.failAfterError());
 });
 
-gulp.task('nsp', function (cb) {
-  $.nsp({package: path.resolve('package.json')}, cb);
+gulp.task('nsp', done => {
+  $.nsp({package: path.resolve('package.json')}, done);
 });
 
-gulp.task('pre-test', function () {
+gulp.task('pre-test', () => {
   return gulp.src('generators/**/*.js')
     .pipe($.istanbul({
       includeUntested: true
@@ -27,29 +27,20 @@ gulp.task('pre-test', function () {
     .pipe($.istanbul.hookRequire());
 });
 
-gulp.task('test', ['pre-test'], function (cb) {
-  var mochaErr;
-
-  gulp.src('test/specs/*.js')
-    .pipe($.plumber())
+gulp.task('test', ['pre-test'], () => {
+  return gulp.src('test/specs/*.js')
     .pipe($.mocha({
       reporter: 'spec',
       timeout: 10000
     }))
-    .on('error', function (err) {
-      mochaErr = err;
-    })
-    .pipe($.istanbul.writeReports())
-    .on('end', function () {
-      cb(mochaErr);
-    });
+    .pipe($.istanbul.writeReports());
 });
 
-gulp.task('coveralls', ['test'], function () {
+gulp.task('coveralls', ['test'], () => {
   if (!process.env.CI) {
     return;
   }
-  return gulp.src(path.join(__dirname, 'coverage/lcov.info'))
+  return gulp.src('coverage/lcov.info')
     .pipe($.coveralls());
 });
 
