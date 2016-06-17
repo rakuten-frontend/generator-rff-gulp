@@ -5,6 +5,9 @@ const chalk = require('chalk');
 const yosay = require('yosay');
 const rp = require('request-promise');
 const path = require('path');
+const updateNotifier = require('update-notifier');
+const pkg = require('../../package.json');
+const notifier = updateNotifier({pkg});
 
 let abort = false;
 
@@ -12,6 +15,26 @@ class Generator extends generators.Base {
   prompting() {
     const dirname = path.basename(this.env.cwd);
     this.log(yosay(`Welcome to ${chalk.red('rff-gulp')} generator!`));
+    notifier.notify({
+      defer: false,
+      boxenOpts: {
+        padding: {
+          top: 0,
+          right: 5,
+          bottom: 0,
+          left: 5
+        },
+        margin: {
+          top: 0,
+          right: 0,
+          bottom: 1,
+          left: 0
+        },
+        align: 'center',
+        borderColor: 'yellow',
+        borderStyle: 'round'
+      }
+    });
     const prompts = [{
       type: 'confirm',
       name: 'ready',
@@ -26,7 +49,7 @@ class Generator extends generators.Base {
 
   writing() {
     if (abort) {
-      this.log('Process canceled.');
+      this.log(chalk.gray('Process canceled'));
       return;
     }
     const user = 'rakuten-frontend';
