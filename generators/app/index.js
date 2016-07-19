@@ -1,6 +1,7 @@
 'use strict';
 
 const generators = require('yeoman-generator');
+const remote = require('yeoman-remote');
 const chalk = require('chalk');
 const yosay = require('yosay');
 const rp = require('request-promise');
@@ -60,17 +61,17 @@ class Generator extends generators.Base {
       .then(pkg => {
         const remoteUrl = `https://github.com/${user}/${repo}/releases/download/v${pkg.version}/${repo}-v${pkg.version}.zip`;
         return new Promise((resolve, reject) => {
-          this.remote(remoteUrl, (err, remote) => {
+          remote(remoteUrl, (err, cachePath) => {
             if (err) {
               reject(err);
               return;
             }
-            resolve(remote);
+            resolve(cachePath);
           }, true);
         });
       })
-      .then(remote => {
-        remote.directory('.', '.');
+      .then(cachePath => {
+        this.fs.copy(cachePath, this.destinationPath());
       })
       .catch(err => {
         abort = true;
