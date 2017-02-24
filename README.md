@@ -28,7 +28,7 @@ Once you install generator-rrf-gulp, you can automatically use the latest templa
 See [rff-gulp](https://github.com/rakuten-frontend/rff-gulp) for details.
 
 ## License
-Copyright (c) 2015-2016 Rakuten, Inc.
+Copyright (c) 2015-2017 Rakuten, Inc.
 Licensed under the [MIT License](LICENSE).
 
 [npm-image]: https://img.shields.io/npm/v/generator-rff-gulp.svg
