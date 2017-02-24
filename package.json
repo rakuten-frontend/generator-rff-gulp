@@ -36,10 +36,10 @@
     "chalk": "^1.0.0",
     "request": "^2.79.0",
     "request-promise": "^4.0.1",
-    "update-notifier": "^1.0.0",
+    "update-notifier": "^2.1.0",
     "yeoman-generator": "^0.24.1",
     "yeoman-remote": "^1.0.1",
-    "yosay": "^1.0.2"
+    "yosay": "^2.0.0"
   },
   "devDependencies": {
     "eslint": "^3.16.1",
