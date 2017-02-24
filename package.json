@@ -41,17 +41,17 @@
     "yosay": "^1.0.2"
   },
   "devDependencies": {
-    "eslint": "^3.0.0",
+    "eslint": "^3.16.1",
     "eslint-config-xo-space": "^0.15.0",
     "gulp": "^3.6.0",
     "gulp-coveralls": "^0.1.0",
     "gulp-eslint": "^3.0.0",
     "gulp-istanbul": "^1.1.0",
     "gulp-load-plugins": "^1.2.0",
-    "gulp-mocha": "^3.0.1",
+    "gulp-mocha": "^4.0.1",
     "gulp-nsp": "^2.1.0",
     "nock": "^9.0.0",
-    "yeoman-assert": "^2.0.0",
+    "yeoman-assert": "^3.0.0",
     "yeoman-test": "^1.1.0"
   },
   "eslintConfig": {
