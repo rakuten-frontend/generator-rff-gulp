@@ -1,6 +1,6 @@
 'use strict';
 
-const generators = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 const remote = require('yeoman-remote');
 const chalk = require('chalk');
 const yosay = require('yosay');
@@ -12,7 +12,7 @@ const notifier = updateNotifier({pkg});
 
 let abort = false;
 
-class Generator extends generators.Base {
+module.exports = class extends Generator {
   prompting() {
     const dirname = path.basename(this.env.cwd);
     this.log(yosay(`Welcome to ${chalk.red('rff-gulp')} generator!`));
@@ -84,8 +84,6 @@ class Generator extends generators.Base {
     if (abort) {
       return;
     }
-    this.installDependencies({bower: false});
+    this.npmInstall();
   }
-}
-
-module.exports = Generator;
+};
