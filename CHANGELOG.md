@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.1.0 (2017-02-24)
+- Update yeoman-generator to v1.1.0.
+- Fix install error regarding request-promise.
+- Update other dependencies.
+
 ## v1.0.0 (2016-06-20)
 - **Breaking changes**
   - Revise support environment.
