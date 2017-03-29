@@ -57,5 +57,10 @@
   },
   "eslintConfig": {
     "extends": "xo-space"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "gulp-mocha"
+    ]
   }
 }
